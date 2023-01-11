@@ -1,0 +1,233 @@
+
+<!-- saved from url=(0026)https://www.nitefallz.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+
+
+
+<title>GemStone IV Stat Cruncher</title>
+
+<style>
+TD {
+text-align: center;
+font-family: verdana;
+font-size: x-small;
+}
+</style>
+
+<script language="JavaScript" src="js/StatCruncher.js"></script>
+
+</head>
+<body background="static/paper002.jpg">
+
+
+<form name="StatCalculator">
+
+<table rows="16">
+<caption><font color="Brown"><b><i>GemStone IV<br></i></b>v2.3</font></caption>
+<tbody><tr></tr><tr></tr><tr></tr><tr></tr>
+
+<tr>
+<td></td><td></td><td colspan="10"><b>Minimum Starting Stats:</b></td>
+<td width="10"></td><td colspan="2"><b>Minimum Starting TP's:</b></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td width="180">Race:
+<select name="race" size="1">
+<option selected="">Dark Elf
+</option><option>Dwarf
+</option><option>Elf
+</option><option>Giantman
+</option><option>Half-Elf
+</option><option>Halfling
+</option><option>Human
+</option><option>Sylvankind
+</option><option>Forest Gnome
+</option><option>Burghal Gnome
+</option><option>Half-Krolvin
+</option><option>Erithian
+</option><option>Aelotoi
+</option></select></td>
+
+<td width="20"></td>
+<td width="26">CO</td>
+<td width="26">DE</td>
+<td width="26">DI</td>
+<td width="26">LO</td>
+<td width="26">IT</td>
+<td width="26">ST</td>
+<td width="26">AG</td>
+<td width="26">IF</td>
+<td width="26">WI</td>
+<td width="26">AU</td>
+
+<td></td><td>Physical: <input type="text" name="PTPMinimum" size="1" maxlength="2"></td>
+</tr>
+
+<tr>
+<td>Profession:
+<select name="profession" size="1">
+<option selected="">Warrior
+</option><option>Rogue
+</option><option>Wizard
+</option><option>Cleric
+</option><option>Empath
+</option><option>Sorcerer
+</option><option>Ranger
+</option><option>Bard
+</option><option>Paladin
+</option><option>Savant
+</option><option>Monk
+</option></select></td>
+<td></td>
+
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+<td><input type="text" name="MinimumStat" size="2" maxlength="3"></td>
+
+<td></td><td>Mental: &nbsp;&nbsp;<input type="text" name="MTPMinimum" size="1" maxlength="2"></td>
+</tr>
+
+<tr height="50">
+<td>Optimize for Level: <input type="text" name="MaxLevel" size="2" maxlength="3" value="100"></td>
+<td></td><td></td>
+<td colspan="2"><input type="button" value="Reset" onclick="Clean(this.form)"></td>
+<td colspan="3"><input type="button" value="Calculate" onclick="Calculate(this.form)"></td>
+<td colspan="5">Iterations: <input type="text" name="Iterations" value="1000" size="5" maxlength="6"></td>
+<td><font size="1" color="Red" face="Times"><b>*WARNING*</b><br>Browser will not respond<br>until program finishes.</font></td><td></td>
+</tr>
+
+<tr>
+<td>Physical Weighting: <input type="text" name="PhysicalWeight" size="4" maxlength="5" value="1"></td>
+</tr>
+
+<tr>
+<td>&nbsp; Mental Weighting: <input type="text" name="MentalWeight" size="4" maxlength="5" value="1"></td>
+
+<td colspan="12"><b>Optimal Stat Placement:</b></td>
+</tr><tr>
+</tr><tr></tr>
+
+<tr><td></td><td></td>
+<td>CO</td>
+<td>DE</td>
+<td>DI</td>
+<td>LO</td>
+<td>IT</td>
+<td>ST</td>
+<td>AG</td>
+<td>IF</td>
+<td>WI</td>
+<td>AU</td>
+</tr>
+
+<tr>
+<td></td><td></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+<td><input type="text" name="CurrentStat" size="2" maxlength="3"></td>
+</tr>
+
+
+
+<tr>
+<td></td><td></td>
+<td colspan="3">Total PTP's:</td>
+<td colspan="2"><input type="text" name="TotalPTP" size="4"></td>
+<td colspan="4">Starting PTP's:</td>
+<td><input type="text" name="StartingPTP" size="2"></td>
+
+</tr><tr>
+<td></td><td></td>
+<td colspan="3">Total MTP's:</td>
+<td colspan="2"><input type="text" name="TotalMTP" size="4"></td>
+<td colspan="4">Starting MTP's:</td>
+<td><input type="text" name="StartingMTP" size="2"></td>
+</tr>
+
+<tr>
+<td></td><td></td>
+<td colspan="3">Total TP's:</td>
+<td colspan="2"><input type="text" name="TotalTP" size="4"></td>
+</tr>
+
+<tr></tr><tr></tr><tr></tr><tr></tr>
+<tr><td></td>
+<td colspan="12"><b>Stats at Optimized Level:</b></td>
+</tr><tr></tr><tr></tr>
+
+<tr><td></td><td></td>
+<td>CO</td>
+<td>DE</td>
+<td>DI</td>
+<td>LO</td>
+<td>IT</td>
+<td>ST</td>
+<td>AG</td>
+<td>IF</td>
+<td>WI</td>
+<td>AU</td>
+</tr>
+
+<tr>
+<td></td><td></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td><input type="text" name="FinalStat" size="2" maxlength="3"></td>
+<td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td>
+<td colspan="3"></td>
+<td colspan="2"></td>
+<td colspan="4">Target Level PTP's:</td>
+<td><input type="text" name="EndingPTP" size="2"></td>
+
+</tr><tr>
+<td></td><td></td>
+<td colspan="3"></td>
+<td colspan="2"></td>
+<td colspan="4">Target Level MTP's:</td>
+<td><input type="text" name="EndingMTP" size="2"></td>
+</tr>
+
+</tbody></table>
+
+
+</form>
+<a href="javascript:void window.open(&#39;Documentation.html&#39;,&#39;Documentation&#39;,&#39;HEIGHT=800,WIDTH=600,scrollbars,menubar&#39;).focus()">Using This Program</a><br>
+<a href="https://www.nitefallz.com/statmax.html">Stax Maximizer</a><br>
+<a href="https://www.nitefallz.com/downloads/trainerGS4.4.4.5.xlsm">Trainer Spreadsheet 4.4.5</a>
+<br>
+<a href="mailto:nitefallz@gmail.com?subject=GSIV%20Stat%20Cruncher%20Page&amp;body=">E-mail me stuff</a>
+
+
+
+
+
+
+</body></html>
