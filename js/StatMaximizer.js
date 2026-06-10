@@ -34,7 +34,7 @@ var races = new Array(
   "an Erithian",
   "an Aelotoi"
 );
-var colors = new Array("Black", "Red", "Blue", "Lime", "Magenta", "Yellow");
+var colors = new Array("Black", "Red", "Blue", "Green", "Magenta", "Yellow");
 var stats = new Array(
   "CO",
   "DE",
@@ -241,7 +241,7 @@ function Clean(form) {
   return;
 }
 
-//Displays the output page
+//Displays the output in the results div on the same page
 function Display(form) {
   var localcolors = new Array(10);
   for (var i = 0; i < 10; i++) localcolors[i] = "Black";
@@ -257,65 +257,52 @@ function Display(form) {
         if (localcolors[j] == "Black") localcolors[j] = colors[currentcolor];
       }
 
-  document.write("<HTML><HEAD><TITLE>Maximized Stats</TITLE>");
-  document.write(
-    "<STYLE>TD {text-align: center; font-family: verdana; font-size: large;} </STYLE>"
-  );
-
-  document.write('</HEAD><BODY BACKGROUND="static/paper002.jpg">');
-  document.write(
-    '<TABLE BORDER=3 COLS=12 WIDTH="80%" ALIGN=Center CELLPADDING=5><TR>'
-  );
-
-  document.write(
-    "<TD COLSPAN=12>Maximized stats for " +
+  var html = "";
+  html += '<HR><STYLE>#results td { font-size: large; }</STYLE>';
+  html += '<TABLE BORDER=3 COLS=12 WIDTH="80%" ALIGN=Center CELLPADDING=5><TR>';
+  html +=
+    '<TD COLSPAN=12>Maximized stats for ' +
       races[Race] +
       " " +
       professions[Profession] +
-      "</TD></TR>"
-  );
-  document.write("<TR><TD></TD><TD></TD>");
+      "</TD></TR>";
+  html += "<TR><TD></TD><TD></TD>";
   for (var i = 0; i < 10; i++) {
-    document.write("<TD><FONT COLOR=" + localcolors[i] + ">" + stats[i]);
-    if (ProfessionMod[Profession][i] == 2) document.write("*");
-    document.write(" </FONT></TD>");
+    html += '<TD><FONT COLOR=' + localcolors[i] + ">" + stats[i];
+    if (ProfessionMod[Profession][i] == 2) html += "*";
+    html += " </FONT></TD>";
   }
-  document.write("</TR><TR>");
+  html += "</TR>";
 
-  document.write("<TR><TD COLSPAN=2>GI's</TD>");
+  html += "<TR><TD COLSPAN=2>GI's</TD>";
   for (var i = 0; i < 10; i++)
-    document.write(
-      "<TD><FONT COLOR=" + localcolors[i] + ">" + GI[i] + "  </FONT></TD>"
-    );
+    html +=
+      '<TD><FONT COLOR=' + localcolors[i] + ">" + GI[i] + "  </FONT></TD>";
 
-  document.write("<TR><TD COLSPAN=2>Initial Placement</TD>");
+  html += "<TR><TD COLSPAN=2>Initial Placement</TD>";
   for (var i = 0; i < 10; i++)
-    document.write(
-      "<TD><FONT COLOR=" + localcolors[i] + ">" + Stat[i] + " </FONT></TD>"
-    );
+    html +=
+      '<TD><FONT COLOR=' + localcolors[i] + ">" + Stat[i] + " </FONT></TD>";
 
-  document.write("<TR><TD COLSPAN=2>Stats at Level 100</TD>");
+  html += "<TR><TD COLSPAN=2>Stats at Level 100</TD>";
   for (var i = 0; i < 10; i++)
-    document.write(
-      "<TD><FONT COLOR=" +
+    html +=
+      '<TD><FONT COLOR=' +
         localcolors[i] +
         ">" +
         StatAtOneHundred(Stat[i], GI[i]) +
-        " </FONT></TD>"
-    );
-  document.write("</TR>");
+        " </FONT></TD>";
+  html += "</TR>";
 
   if (PointLeftover == 1)
-    document.write(
-      "<TR><TD COLSPAN=12><FONT COLOR=Red>One point is left over--placing it in any stat makes no difference to stats at level 100.</FONT></TD></TR>"
-    );
+    html +=
+      '<TR><TD COLSPAN=12><FONT COLOR=Red>One point is left over--placing it in any stat makes no difference to stats at level 100.</FONT></TD></TR>';
 
-  document.write("</TABLE>");
+  html += "</TABLE>";
 
-  document.write(
-    "<P><CENTER>* denotes prime stat<BR>Except for stats in black, stats of the same color have the same growth rate, thus their initial placement is interchangeable.<BR>(Prime stats must remain at least 30, however.)"
-  );
+  html +=
+    '<P><CENTER>* denotes prime stat<BR>Except for stats in black, stats of the same color have the same growth rate, thus their initial placement is interchangeable.<BR>(Prime stats must remain at least 30, however.)';
 
-  document.write("</BODY></HTML>");
+  document.getElementById("results").innerHTML = html;
   return;
 }
